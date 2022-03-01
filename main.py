@@ -9,4 +9,5 @@ def home():
     return {"message": "Hello, it works"}
 @app.get("/image/{url}")
 def urlscan(url: str):
-    return {"Text": ocr(url)}
+    text = ocr(url)
+    return {"Text": text}

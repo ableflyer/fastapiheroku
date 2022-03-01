@@ -1,4 +1,4 @@
-import easyocr
+# import easyocr
 # image_path = 'pycode.png'
 # reader = easyocr.Reader(['en'], gpu=False)
 # result = reader.readtext(image_path)
