@@ -9,18 +9,17 @@ import sys, os
 from starlette.requests import Request
 import io
 from pydantic import BaseModel
+
 app = fpi.FastAPI()
 
-class ImageType(BaseModel):
- url: str
 
-@app.get("/")
-def home():
-    return {"message": "Hello, it works"}
+class ImageType(BaseModel):
+    url: str
+
 
 @app.post("/predict/")
 def prediction(request: Request,
- file: bytes = fpi.File(...)):
+               file: bytes = fpi.File(...)):
     if request.method == "POST":
         image_stream = io.BytesIO(file)
         image_stream.seek(0)
