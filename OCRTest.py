@@ -9,7 +9,10 @@ import urllib.request
 import numpy as np
 import cv2
 from PIL import Image
-
+import sys, os
+from starlette.requests import Request
+import io
+from pydantic import BaseModel
 
 def ocr(url):
     urllib.request.urlretrieve(url, "test.png")
