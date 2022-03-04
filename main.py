@@ -31,5 +31,5 @@ app = fpi.FastAPI()
 #         return c
 #     return "No label found"
 @app.get("/images/{urlImage}")
-async def ocrimage(urlImage: str):
+async def ocrimage(urlImage):
     return {"url": urlImage}
