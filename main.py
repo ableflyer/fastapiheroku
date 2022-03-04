@@ -13,6 +13,9 @@ from pydantic import BaseModel
 app = fpi.FastAPI()
 
 
+class ImageType(BaseModel):
+    url: str
+
 
 # @app.post("/predict/")
 # def prediction(request: Request,
@@ -30,6 +33,11 @@ app = fpi.FastAPI()
 #         c = pyt.image_to_string(frame)
 #         return c
 #     return "No label found"
-@app.get("/images/{urlImage}")
-async def ocrimage(urlImage):
-    return {"url": urlImage}
+@app.get("/images/{urlweb}")
+async def img(urlweb: str):
+    ImageType.url = urlweb
+
+
+@app.post("/getimage/")
+async def url(urlImage: ImageType):
+    return {"type": urlImage.url}
