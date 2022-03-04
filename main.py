@@ -13,21 +13,23 @@ from pydantic import BaseModel
 app = fpi.FastAPI()
 
 
-class ImageType(BaseModel):
-    url: str
 
-
-@app.post("/predict/")
-def prediction(request: Request,
-               file: bytes = fpi.File(...)):
-    if request.method == "POST":
-        image_stream = io.BytesIO(file)
-        image_stream.seek(0)
-        file_bytes = np.asarray(bytearray(image_stream.read()), dtype=np.uint8)
-        # urllib.request.urlretrieve(url, "test.png")
-        # cv2.imread("test.png")
-        pyt.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
-        frame = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-        c = pyt.image_to_string(frame)
-        return c
-    return "No label found"
+# @app.post("/predict/")
+# def prediction(request: Request,
+#                file: bytes = fpi.File(...)):
+#     if request.method == "POST":
+#         img = ImageType()
+#         img.
+#         image_stream = io.BytesIO(file)
+#         image_stream.seek(0)
+#         file_bytes = np.asarray(bytearray(image_stream.read()), dtype=np.uint8)
+#         # urllib.request.urlretrieve(url, "test.png")
+#         # cv2.imread("test.png")
+#         pyt.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+#         frame = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+#         c = pyt.image_to_string(frame)
+#         return c
+#     return "No label found"
+@app.get("/images/{urlImage}")
+async def ocrimage(urlImage: str):
+    return {"url": urlImage}
