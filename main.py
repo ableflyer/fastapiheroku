@@ -36,6 +36,7 @@ class ImageType(BaseModel):
 @app.get("/images/{urlweb}")
 async def img(urlweb: str):
     ImageType.url = urlweb
+    return {"type": ImageType.url}
 
 
 @app.post("/getimage/")
