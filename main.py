@@ -31,6 +31,6 @@ app = fpi.FastAPI()
 #     return "No label found"
 @app.get("/")
 def text():
-    return {"text", "Hello"}
+    return {"text": "Hello"}
 
 
