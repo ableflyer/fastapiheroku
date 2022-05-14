@@ -4,19 +4,22 @@
 # result = reader.readtext(image_path)
 # for i in result:
 #     print(i[1])
-import pytesseract as pyt
-import urllib.request
-import numpy as np
-import cv2
-from PIL import Image
-import sys, os
-from starlette.requests import Request
-import io
-from pydantic import BaseModel
-
-def ocr(url):
-    urllib.request.urlretrieve(url, "test.png")
-    cv2.imread("test.png")
-    pyt.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
-    c = pyt.image_to_string(Image.open("test.png"))
-    return c
+# import pytesseract as pyt
+# import urllib.request
+# import numpy as np
+# import cv2
+# from PIL import Image
+# import sys, os
+# from starlette.requests import Request
+# import io
+# from pydantic import BaseModel
+#
+# def ocr(url):
+#     urllib.request.urlretrieve(url, "test.png")
+#     cv2.imread("test.png")
+#     pyt.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+#     c = pyt.image_to_string(Image.open("test.png"))
+#     return c
+import requests
+r = requests.get("https://ic4-project.herokuapp.com/getimage")
+print(r.url)

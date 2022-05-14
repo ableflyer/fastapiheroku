@@ -8,6 +8,7 @@ from PIL import Image
 import sys, os
 from starlette.requests import Request
 import io
+import requests
 from pydantic import BaseModel
 
 app = fpi.FastAPI()
@@ -33,12 +34,6 @@ class ImageType(BaseModel):
 #         c = pyt.image_to_string(frame)
 #         return c
 #     return "No label found"
-@app.get("/images/{urlweb}")
-async def img(urlweb: str):
-    ImageType.url = urlweb
-    return {"type": ImageType.url}
-
-
-@app.post("/getimage/")
-async def url(urlImage: ImageType):
-    return {"type": urlImage.url}
+@app.get("/{id}")
+def req(id: str):
+    return {"Value": id}
