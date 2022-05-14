@@ -34,6 +34,8 @@ class ImageType(BaseModel):
 #         c = pyt.image_to_string(frame)
 #         return c
 #     return "No label found"
-@app.get("/{id}")
-def req(id: str):
-    return {"Value": id}
+@app.get("/images/{urlweb}")
+def img(urlweb: str):
+    return {"type": urlweb}
+
+
