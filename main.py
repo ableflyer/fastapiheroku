@@ -1,5 +1,4 @@
 import fastapi as fpi
-from OCRTest import ocr
 import pytesseract as pyt
 import urllib.request
 import numpy as np
@@ -12,10 +11,6 @@ import requests
 from pydantic import BaseModel
 
 app = fpi.FastAPI()
-
-
-class ImageType(BaseModel):
-    url: str
 
 
 # @app.post("/predict/")
@@ -34,8 +29,8 @@ class ImageType(BaseModel):
 #         c = pyt.image_to_string(frame)
 #         return c
 #     return "No label found"
-@app.get("/{id}")
-def img(id: str):
-    return {"type": id}
+@app.get("/")
+def text():
+    return {"text", "Hello"}
 
 
